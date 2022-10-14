@@ -27,9 +27,16 @@ abstract class PessoaMock {
         return pessoa;
     }
 
-    protected EntidadePessoa alterarCadastro(EntidadePessoa pessoa ){
-        adicionaRegistro.add(pessoa);
-        return pessoa;
+    protected EntidadePessoa alterarCadastro(long id, EntidadePessoa pessoaUpdate){
+        for (EntidadePessoa pessoa : getListaDePessoas()) {
+            System.out.println(pessoa.getNome());
+            if (pessoa.getId().equals(id)) {
+                adicionaRegistro.remove(pessoa);
+            }
+        }
+        pessoaUpdate.setId(id);
+        adicionaRegistro.add(pessoaUpdate);
+        return pessoaUpdate;
     }
 
     protected EntidadePessoa addPessoa(EntidadePessoa pessoa) {
