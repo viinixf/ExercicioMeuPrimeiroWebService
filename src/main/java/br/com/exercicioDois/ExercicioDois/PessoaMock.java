@@ -4,16 +4,54 @@ import br.com.exerciciodois.ExercicioDois.EntidadePessoa;
 import java.util.ArrayList;
 import java.util.List;
 
-//Classe responsável por fazer a simulação do Banco
+
 abstract class PessoaMock {
 
-    //Lista de Registros
-    protected final List<EntidadePessoa> registroDeDados = new ArrayList<>();
+    private List<EntidadePessoa> listaDePessoas = new ArrayList<>();
 
-    protected List<EntidadePessoa> listaMockada() {
-        this.registroDeDados.add(new EntidadePessoa(1l, "Fritz", 22, "93494107025", "0259548125"));
-        this.registroDeDados.add(new EntidadePessoa(2l, "Frida", 22, "93494107014", "59984954564"));
-        return registroDeDados;
+    private List<EntidadePessoa> adicionaRegistro = new ArrayList<>();
+
+    public PessoaMock() {
+        this.inicializaLista();
     }
+    public List<EntidadePessoa> getListaDePessoas() {
+        return listaDePessoas;
+    }
+
+    /*public void setListaDePessoas(List<EntidadePessoa> listaDePessoas) {
+        this.listaDePessoas = listaDePessoas;
+    }*/
+
+    protected EntidadePessoa deleteRegistros(EntidadePessoa pessoa) {
+        listaDePessoas.remove(pessoa);
+        return pessoa;
+    }
+
+    protected EntidadePessoa alterarCadastro(EntidadePessoa pessoa ){
+        adicionaRegistro.add(pessoa);
+        return pessoa;
+    }
+
+    protected EntidadePessoa addPessoa(EntidadePessoa pessoa) {
+        this.listaDePessoas.add(pessoa);
+        return pessoa;
+    }
+
+    //Lista de Registros
+    protected List<EntidadePessoa> listaMockada() {
+        return listaDePessoas;
+    }
+
+
+    public abstract EntidadePessoa insert(EntidadePessoa pessoa);
+
+    public abstract EntidadePessoa delete(EntidadePessoa pessoa);
+
     public abstract List<EntidadePessoa> getAll();
+
+    private void inicializaLista() {
+        this.listaDePessoas.add(new EntidadePessoa(1l, "Fritz", 22, "93494107025", "0259548125"));
+        this.listaDePessoas.add(new EntidadePessoa(2l, "Frida", 22, "93494107014", "59984954564"));
+    }
+
 }

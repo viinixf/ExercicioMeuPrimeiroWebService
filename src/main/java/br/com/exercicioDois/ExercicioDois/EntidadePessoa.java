@@ -7,6 +7,12 @@ public class EntidadePessoa {
     private String CPF;
     private String telefone;
 
+    public EntidadePessoa() {
+    }
+
+
+    
+
     public EntidadePessoa(Long id, String nome, int idade, String CPF, String telefone) {
         this.id = id;
         this.nome = nome;

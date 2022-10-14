@@ -10,8 +10,38 @@ import br.com.exerciciodois.ExercicioDois.EntidadePessoa;
 @Component
 public class PessoaRepositoryMock extends PessoaMock {
 
+    public PessoaRepositoryMock() {
+        super();
+    }
+
+    /**
+     * Retorna a lista de pessoas
+     *
+     * @return {@code List<EntidadePessoa>}
+     */
     @Override
     public List<EntidadePessoa> getAll() {
-        return registroDeDados;
+        return getListaDePessoas();
     }
+
+    /**
+     * Deleta uma pessoa
+     *
+     * @param pessoa
+     * @return
+     */
+    @Override
+    public EntidadePessoa delete(EntidadePessoa pessoa) {
+        return deleteRegistros(pessoa);
     }
+
+    /**public EntidadePessoa atualizar(EntidadePessoa pessoa){
+        return alteraLista(pessoa);
+    }*/
+
+    @Override
+    public EntidadePessoa insert(EntidadePessoa pessoa) {
+        return addPessoa(pessoa);
+    }
+
+}
