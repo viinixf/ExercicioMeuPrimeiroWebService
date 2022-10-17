@@ -1,5 +1,5 @@
 package br.com.exerciciodois.ExercicioDois;
-public class EntidadePessoa {
+public class Pessoa {
 
     private Long id;
     private String nome;
@@ -7,13 +7,10 @@ public class EntidadePessoa {
     private String CPF;
     private String telefone;
 
-    public EntidadePessoa() {
+    public Pessoa() {
     }
 
-
-    
-
-    public EntidadePessoa(Long id, String nome, int idade, String CPF, String telefone) {
+    public Pessoa(Long id, String nome, int idade, String CPF, String telefone) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
@@ -48,7 +45,7 @@ public class EntidadePessoa {
         return CPF;
     }
 
-    public void setCPF(String CPF) {
+    public void setCpf(String CPF) {
         this.CPF = CPF;
     }
 

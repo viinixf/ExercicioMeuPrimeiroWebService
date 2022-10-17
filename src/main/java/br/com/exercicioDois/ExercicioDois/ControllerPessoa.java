@@ -4,7 +4,7 @@
  */
 package br.com.exercicioDois.ExercicioDois;
 
-import br.com.exerciciodois.ExercicioDois.EntidadePessoa;
+import br.com.exerciciodois.ExercicioDois.Pessoa;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,21 +30,21 @@ public class ControllerPessoa {
     @Autowired // Serve para marcar o ponto de injeção na classe.
     private PessoaRepositoryMock repository;
 
-    private List<EntidadePessoa> listaPessoa = new ArrayList<>();
+    private List<Pessoa> listaPessoa = new ArrayList<>();
 
     public ControllerPessoa(PessoaRepositoryMock repository) {
         this.repository = repository;
     }
 
     @GetMapping // Usada para mapear solicitações HTTP GET em métodos manipuladores especificos
-    public List<EntidadePessoa> registroDeDados() {
+    public List<Pessoa> registroDeDados() {
         return repository.getAll();
     }
 
     @DeleteMapping("/{id}") // Excluir recurso
     public ResponseEntity<String> delete(@PathVariable Long id) {
-        EntidadePessoa excluido = new EntidadePessoa();
-        for (EntidadePessoa pessoa : repository.getAll()) {
+        Pessoa excluido = new Pessoa();
+        for (Pessoa pessoa : repository.getAll()) {
             System.out.println(pessoa.getNome());
             if (pessoa.getId().equals(id)) {
                excluido = repository.delete(pessoa);
@@ -54,21 +54,17 @@ public class ControllerPessoa {
     }
 
     @PostMapping
-    public ResponseEntity insert(@RequestBody EntidadePessoa pessoa) {
+    public ResponseEntity insert(@RequestBody Pessoa pessoa) {
 
         pessoa.setId(repository.getAll().size()+1L);
         repository.insert(pessoa);
 
         return ResponseEntity.ok(pessoa);
+    }
 
-        // pessoa.getNome()
-
-        /*for (EntidadePessoa pessoa : repository.getAll()) {
-            System.out.println(pessoa.getId());
-            if (pessoa.getId().equals(id)) {
-                repository.alteraLista(pessoa);
-            }
-        }*/
-        // return ResponseEntity.notFound().build();
+    @PutMapping("/{id}")
+    public ResponseEntity atualizar(@PathVariable ("id") long id, @RequestBody Pessoa pessoa){
+        repository.atualiza(id, pessoa);
+        return ResponseEntity.ok(pessoa);
     }
 }
