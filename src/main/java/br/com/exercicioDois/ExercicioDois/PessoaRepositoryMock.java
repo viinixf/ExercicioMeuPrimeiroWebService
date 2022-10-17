@@ -23,7 +23,6 @@ public class PessoaRepositoryMock extends PessoaMock {
     public List<Pessoa> getAll() {
         return getListaDePessoas();
     }
-
     /**
      * Deleta uma pessoa
      *
@@ -39,6 +38,7 @@ public class PessoaRepositoryMock extends PessoaMock {
         return addPessoa(pessoa);
     }
 
+    @Override
     public Pessoa atualiza(Long id, Pessoa pessoa){
         return atualizaCadastro(id, pessoa);
     }
