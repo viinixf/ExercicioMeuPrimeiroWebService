@@ -1,22 +1,37 @@
 package br.com.exerciciodois.ExercicioDois;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Pessoa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String nome;
+    @Column
     private int idade;
-    private String CPF;
+    @Column
+    private String cpf;
+    @Column
     private String telefone;
 
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, int idade, String CPF, String telefone) {
+    public Pessoa(Long id, String nome, int idade, String cpf, String telefone) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
-        this.CPF = CPF;
+        this.cpf = cpf;
         this.telefone = telefone;
     }
+
     public Long getId() {
         return id;
     }
@@ -41,12 +56,12 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpf(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getTelefone() {

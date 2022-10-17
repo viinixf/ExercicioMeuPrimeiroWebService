@@ -47,23 +47,25 @@ public class ControllerPessoa {
         for (Pessoa pessoa : repository.getAll()) {
             System.out.println(pessoa.getNome());
             if (pessoa.getId().equals(id)) {
-               excluido = repository.delete(pessoa);
+                excluido = repository.delete(pessoa);
             }
         }
         return ResponseEntity.ok().build();
     }
 
+    //Método utilizado para adicionar uma nova pessoa na lista
     @PostMapping
     public ResponseEntity insert(@RequestBody Pessoa pessoa) {
 
-        pessoa.setId(repository.getAll().size()+1L);
+        pessoa.setId(repository.getAll().size() + 1L);
         repository.insert(pessoa);
 
         return ResponseEntity.ok(pessoa);
     }
 
+    //Método utilizado para atualizar informações da pessoa
     @PutMapping("/{id}")
-    public ResponseEntity atualizar(@PathVariable ("id") long id, @RequestBody Pessoa pessoa){
+    public ResponseEntity atualizar(@PathVariable("id") long id, @RequestBody Pessoa pessoa) {
         repository.atualiza(id, pessoa);
         return ResponseEntity.ok(pessoa);
     }

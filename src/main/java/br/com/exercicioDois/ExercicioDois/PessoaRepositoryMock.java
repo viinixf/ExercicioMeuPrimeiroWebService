@@ -7,7 +7,7 @@ import br.com.exerciciodois.ExercicioDois.Pessoa;
 /**
  * Descrição da classe.
  */
-@Component
+//@Component
 public class PessoaRepositoryMock extends PessoaMock {
 
     public PessoaRepositoryMock() {
